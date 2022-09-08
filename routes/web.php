@@ -14,5 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('chamados.index');
 });
+
+Route::get('/semigual',function(){
+    include dirname(__FILE__,2)."/semigual/index.php";
+});
+
