@@ -13,7 +13,7 @@ class ChamadosController extends Controller
      */
     public function index()
     {
-        //
+        return view('chamados.index');
     }
 
     /**

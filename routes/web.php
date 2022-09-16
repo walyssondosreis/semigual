@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChamadosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,10 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('chamados.index');
+    return to_route('chamados.index');
 });
 
-Route::get('/semigual',function(){
-    include dirname(__FILE__,2)."/semigual/index.php";
-});
-
+Route::resource('/chamados', ChamadosController::class)
+    ->only(['index']);
