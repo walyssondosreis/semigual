@@ -11,4 +11,9 @@ class Perfil extends Model
 
     protected $table = 'perfis';
     public $timestamps = false;
+
+    public function usuarios()
+    {
+        return $this->hasMany(Usuario::class,'usuario_id');
+    }
 }

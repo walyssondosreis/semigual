@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('indisponibilidades', function (Blueprint $table) {
+        Schema::create('interacoes', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->timestamps(); // Define o 'created_at' & 'updated_at'
         });
     }
 
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('indisponibilidades');
+        Schema::dropIfExists('interacoes');
     }
 };

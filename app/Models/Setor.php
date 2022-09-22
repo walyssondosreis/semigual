@@ -11,4 +11,9 @@ class Setor extends Model
 
     protected $table = 'setores';
     public $timestamps = false ;
+
+    public function usuarios()
+    {
+        return $this->hasMany(Usuario::class,'usuario_id');
+    }
 }

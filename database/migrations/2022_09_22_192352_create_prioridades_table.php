@@ -13,8 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('chamados', function (Blueprint $table) {
+        Schema::create('prioridades', function (Blueprint $table) {
             $table->id();
+            $table->string('nome');
+            $table->text('descricao');
+            $table->unsignedTinyInteger('numero');
         });
     }
 
@@ -25,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('chamados');
+        Schema::dropIfExists('prioridades');
     }
 };

@@ -8,5 +8,4 @@ class Servico extends Alvo
 {
     use HasFactory;
 
-    public $timestamps = false ; 
 }

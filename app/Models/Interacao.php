@@ -5,19 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Usuario extends Model
+
+class Interacao extends Model
 {
     use HasFactory;
 
+    protected $table = 'interacoes';
     const CREATED_AT = 'datah_ini';
     const UPDATED_AT = 'datah_alt';
 
-    public function perfis()
+    public function alvos()
     {
-        return $this->belongsTo(Perfil::class);
-    }
-    public function setores()
-    {
-        return $this->belongsTo(Setor::class);
+        return $this->belongsTo(Alvo::class);
     }
 }

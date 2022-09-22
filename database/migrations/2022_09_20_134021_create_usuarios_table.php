@@ -15,7 +15,12 @@ return new class extends Migration
     {
         Schema::create('usuarios', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->timestamps(); // Define o 'created_at' & 'updated_at'
+            $table->string('nome');
+            $table->string('sobrenome');
+            $table->string('nome_usr');
+            $table->foreignId('perfil_id')->constrained();
+            $table->foreignId('setor_id')->constrained();
         });
     }
 

@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('sistemas', function (Blueprint $table) {
             $table->id();
+            $table->string('nome');
+            $table->text('descricao');
+            $table->foreignId('interacao_id')->constrained();
         });
     }
 
