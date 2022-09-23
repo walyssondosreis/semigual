@@ -16,6 +16,14 @@ class Interacao extends Model
 
     public function alvos()
     {
-        return $this->belongsTo(Alvo::class);
+        return $this->belongsTo(Alvo::class,'alvo_id');
+    }
+    public function estados()
+    {
+        return $this->belongsTo(Estado::class,'estado_id');
+    }
+    public function chamados()
+    {
+        return $this->belongsTo(Chamado::class,'chamado_id');
     }
 }

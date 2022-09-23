@@ -10,4 +10,9 @@ class Prioridade extends Model
     use HasFactory;
 
     public $timestamps = false;
+
+    public function chamados()
+    {
+        return $this->hasMany(Chamado::class,'chamado_id');
+    }
 }

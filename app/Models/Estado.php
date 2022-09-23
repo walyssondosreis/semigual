@@ -10,4 +10,9 @@ class Estado extends Model
     use HasFactory;
 
     public $timestamps = false;
+
+    public function interacoes()
+    {
+        return $this->hasMany(Interacao::class,'interacao_id');
+    }
 }

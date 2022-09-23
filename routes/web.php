@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ChamadosController;
+use App\Http\Controllers\SetoresController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +21,6 @@ Route::get('/', function () {
 
 Route::resource('/chamados', ChamadosController::class)
     ->only(['index']);
+
+Route::resource('/setores',SetoresController::class)
+    ->only(['index','create','store']);

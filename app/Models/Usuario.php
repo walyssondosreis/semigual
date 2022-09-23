@@ -14,10 +14,15 @@ class Usuario extends Model
 
     public function perfis()
     {
-        return $this->belongsTo(Perfil::class);
+        return $this->belongsTo(Perfil::class,'perfil_id');
     }
     public function setores()
     {
-        return $this->belongsTo(Setor::class);
+        return $this->belongsTo(Setor::class,'setor_id');
     }
+    public function chamados()
+    {
+        return $this->hasMany(Chamado::class,'chamado_id');
+    }
+
 }

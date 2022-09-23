@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('servicos', function (Blueprint $table) {
+        Schema::create('chamados_categorias',function(Blueprint $table){
             $table->id();
-            $table->string('nome');
-            $table->text('descricao');
-            $table->foreignId('interacao_id')->constrained();
+            $table->foreignId('chamado_id')->constrained();
+            $table->foreignId('categoria_id')->constrained();
+
         });
     }
 
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('servicos');
+        Schema::dropIfExists('chamados_categorias');
     }
 };

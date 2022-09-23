@@ -11,9 +11,13 @@
 </head>
 
 <body>
-   <div class="container">
-    <!-- <h1>{{ $title }} - Topizêra</h1> -->
-    {{ $slot }}
+    <div class="container form-signin rounded-3 border border-2 form-control w-100 m-auto text-center">
+        <div class="rounded border" style="padding: 20px;">
+            <img class="mb-4" src="{{ url('storage/picture/logox1.png') }}" alt="" width="60" height="40">
+            {{ $slot }}
+            <!-- Campo creditos -->
+            <p class="mt-3 text-muted">&copy; <?php echo "Vox Conexão " . date('Y') ?></p>
+        </div>
     </div>
 </body>
 
