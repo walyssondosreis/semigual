@@ -19,8 +19,19 @@ Route::get('/', function () {
     return to_route('setores.index');
 });
 
-Route::resource('/chamados', ChamadosController::class)
-    ->only(['index']);
+// Grupo de Rotas para : Chamados
+Route::controller(ChamadosController::class)->group(function(){
+    Route::get('/chamados','index')->name('chamados.index');
+});
 
-Route::resource('/setores',SetoresController::class)
-    ->only(['index','create','store','destroy']);
+// Grupo de Rotas para : Setores
+Route::controller(SetoresController::class)->group(function(){
+    Route::get('/setores','index')->name('setores.index');
+    Route::get('/setores/criar','create')->name('setores.create');
+    Route::get('/setores/editar','edit')->name('setores.edit');
+    Route::post('/setores/salvar','store')->name('setores.store');
+    Route::put('/setores/atualizar','update')->name('setores.update');
+    Route::delete('/setores/deletar/{id}','destroy')->name('setores.destroy');
+});
+
+

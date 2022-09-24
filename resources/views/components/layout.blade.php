@@ -11,14 +11,19 @@
 </head>
 
 <body>
-    <div class="container form-signin rounded-3 border border-2 form-control w-100 m-auto text-center">
+    <div class="container form-signin rounded-3 border border-2 form-control w-100 m-auto">
         <div class="rounded border" style="padding: 20px;">
-            <img class="mb-4" src="{{ url('storage/picture/logox1.png') }}" alt="" width="60" height="40">
+            <div class="text-center">
+                <img class="mb-4" src="{{ url('storage/picture/logox1.png') }}" alt="" width="60" height="40">
+                <h1 class="fs-6">SISTEMA SEM IGUAL <br> {{ mb_strtoupper($title) }} </h1>
+            </div>
             {{ $slot }}
             <!-- Campo creditos -->
-            <p class="mt-3 text-muted">&copy; <?php echo "Vox Conexão " . date('Y') ?></p>
+            <p class="mt-3 text-muted text-center">&copy; <?php echo "Vox Conexão " . date('Y') ?></p>
         </div>
     </div>
 </body>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
 </html>

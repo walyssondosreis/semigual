@@ -4,9 +4,15 @@
     @if($update)
     @method('PUT')
     @endif
-    <label for="nome" class="form-label">Nome: </label>
-    <input type="text" id="nome" name="nome" class="form-control " @isset($nome)value="{{ $nome }}" @endisset>
-    <div class="form-text mb-3">Insira o nome do setor</div>
-    <button type="submit" class="btn btn-primary mb-3">Adicionar</button>
-    <a href={{ route('setores.index') }} class="btn btn-dark mb-3">Cancelar</a>
+    
+    <div class="form-text mb-2 text-center">Preencha o formulário de setor</div>
+    
+    <input type="text" id="nome" name="nome" class="form-control mb-2" placeholder="Nome" @isset($nome)value="{{ $nome }}" @endisset>
+
+    <textarea id="descricao" name="descricao" class="form-control mb-2" placeholder="Descrição" style="height: 100px"></textarea>
+
+    <div class="text-center mt-3">
+        <button type="submit" class="btn btn-primary">Adicionar</button>
+        <a href={{ route('setores.index') }} class="btn btn-dark">Cancelar</a>
+    </div>
 </form>

@@ -11,7 +11,7 @@ class Setor extends Model
 
     protected $table = 'setores';
     public $timestamps = false ;
-    protected $fillable = ['nome'];
+    protected $fillable = ['nome','descricao'];
 
     public function usuarios()
     {

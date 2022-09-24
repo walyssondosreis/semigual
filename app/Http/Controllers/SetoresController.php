@@ -58,9 +58,10 @@ class SetoresController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Setor $setores)
     {
-        //
+        // dd($setores);
+        return view('setores.edit')->with('setor',$setores);
     }
 
     /**
@@ -70,9 +71,13 @@ class SetoresController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Setor $setores)
     {
-        //
+        $setores->fill($request->all());
+        $setores->save();
+
+        return to_route('setores.index');
+
     }
 
     /**
@@ -81,9 +86,9 @@ class SetoresController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Setor $setores)
+    public function destroy($id)
     {         
-        $setores->delete();
+        Setor::findOrFail($id)->delete();
 
         return to_route('setores.index');
     }
