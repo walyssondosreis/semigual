@@ -9,7 +9,7 @@
             {{ $setor->nome }}
             <span class="d-flex">
                 <a href="" class="btn btn-primary btn-sm">E</a>
-                <form action="" method="POST" class="ms-2">
+                <form action="{{ route('setores.destroy',$setor->id) }}" method="POST" class="ms-2">
                     @csrf
                     @method('DELETE')
                     <button class="btn btn-danger btn-sm">X</button>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Setor;
 
+
 class SetoresController extends Controller
 {
     /**
@@ -36,7 +37,8 @@ class SetoresController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $setor = Setor::create($request->all());
+        return to_route('setores.index');
     }
 
     /**
@@ -79,8 +81,10 @@ class SetoresController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy(Setor $setores)
+    {         
+        $setores->delete();
+
+        return to_route('setores.index');
     }
 }

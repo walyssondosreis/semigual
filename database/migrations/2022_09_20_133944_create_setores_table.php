@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('setores', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
-            $table->text('descricao');
+            $table->text('descricao')->nullable();
         });
     }
 

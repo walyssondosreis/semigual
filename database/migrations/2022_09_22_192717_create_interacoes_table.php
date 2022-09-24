@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('interacoes', function (Blueprint $table) {
             $table->id();
             $table->timestamps(); // Define o 'created_at' & 'updated_at'
-            $table->timestamp('datah_fim');
-            $table->text('descricao');
+            $table->timestamp('datah_fim')->nullable();
+            $table->text('descricao')->nullable();
             $table->foreignId('alvo_id')->constrained();
             $table->foreignId('estado_id')->constrained();
             $table->foreignId('chamado_id')->constrained();

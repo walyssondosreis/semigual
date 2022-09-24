@@ -16,11 +16,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return to_route('chamados.index');
+    return to_route('setores.index');
 });
 
 Route::resource('/chamados', ChamadosController::class)
     ->only(['index']);
 
 Route::resource('/setores',SetoresController::class)
-    ->only(['index','create','store']);
+    ->only(['index','create','store','destroy']);

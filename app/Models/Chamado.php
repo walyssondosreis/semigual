@@ -23,10 +23,6 @@ class Chamado extends Model
     {
         return $this->belongsTo(Usuario::class, 'tecnico_id');
     }
-    public function prioridades()
-    {
-        return $this->belongsTo(Prioridade::class, 'priodiade_id');
-    }
     public function categorias()
     {
         return $this->belongsToMany(Categoria::class, 'chamados_categorias','categoria_id','chamado_id');

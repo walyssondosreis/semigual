@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('chamados', function (Blueprint $table) {
             $table->id();
             $table->foreignId('usuario_id')->constrained();
-            $table->unsignedBigInteger('tecnico_id');
-            $table->foreignId('prioridade_id')->constrained();
+            $table->unsignedTinyInteger('prioridade')->nullable();
+            $table->unsignedBigInteger('tecnico_id')->nullable();
         });
     }
 
