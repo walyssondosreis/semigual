@@ -28,9 +28,9 @@ Route::controller(ChamadosController::class)->group(function(){
 Route::controller(SetoresController::class)->group(function(){
     Route::get('/setores','index')->name('setores.index');
     Route::get('/setores/criar','create')->name('setores.create');
-    Route::get('/setores/editar','edit')->name('setores.edit');
+    Route::get('/setores/editar/{id}','edit')->name('setores.edit');
     Route::post('/setores/salvar','store')->name('setores.store');
-    Route::put('/setores/atualizar','update')->name('setores.update');
+    Route::put('/setores/atualizar/{id}','update')->name('setores.update');
     Route::delete('/setores/deletar/{id}','destroy')->name('setores.destroy');
 });
 

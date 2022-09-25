@@ -58,10 +58,11 @@ class SetoresController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Setor $setores)
+    public function edit($id)
     {
         // dd($setores);
-        return view('setores.edit')->with('setor',$setores);
+        $setor = Setor::findOrFail($id);
+        return view('setores.edit')->with('setor',$setor);
     }
 
     /**
@@ -71,10 +72,10 @@ class SetoresController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Setor $setores)
+    public function update(Request $request)
     {
-        $setores->fill($request->all());
-        $setores->save();
+        // dd('chegou aqui');
+        Setor::findOrFail($request->id)->update($request->all());
 
         return to_route('setores.index');
 
