@@ -16,7 +16,8 @@ class SetoresController extends Controller
     public function index(Request $request)
     {
         $setores = Setor::all();
-        return view('setores.index',compact('setores'));
+        $mensagemSucesso = session('mensagem.sucesso');
+        return view('setores.index', compact('setores', 'mensagemSucesso'));
     }
 
     /**
@@ -38,7 +39,8 @@ class SetoresController extends Controller
     public function store(Request $request)
     {
         $setor = Setor::create($request->all());
-        return to_route('setores.index');
+        return to_route('setores.index')
+            ->with('mensagem.sucesso', "Setor '{$setor->nome}' adicionado com sucesso");
     }
 
     /**
@@ -62,7 +64,7 @@ class SetoresController extends Controller
     {
         // dd($setores);
         $setor = Setor::findOrFail($id);
-        return view('setores.edit')->with('setor',$setor);
+        return view('setores.edit')->with('setor', $setor);
     }
 
     /**
@@ -77,8 +79,8 @@ class SetoresController extends Controller
         // dd('chegou aqui');
         Setor::findOrFail($request->id)->update($request->all());
 
-        return to_route('setores.index');
-
+        return to_route('setores.index')
+        ->with('mensagem.sucesso',"Setor atualizado com sucesso");
     }
 
     /**
@@ -88,9 +90,10 @@ class SetoresController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {         
+    {
         Setor::findOrFail($id)->delete();
 
-        return to_route('setores.index');
+        return to_route('setores.index')
+        ->with('mensagem.sucesso',"Setor removido com sucesso");
     }
 }

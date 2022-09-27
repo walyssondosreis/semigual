@@ -10,11 +10,7 @@
     <input type="text" id="nome" name="nome" class="form-control mb-2" placeholder="Nome"
      @isset($nome)value="{{ $nome }}" @endisset>
 
-    <textarea id="descricao" name="descricao" class="form-control mb-2" style="height: 100px">
-    @isset($descricao)
-    {{ $descricao }}
-    @endisset
-    </textarea>
+    <textarea id="descricao" name="descricao" class="form-control mb-2" style="height: 100px">@isset($descricao){{ $descricao }}@endisset</textarea>
 
     <div class="text-center mt-3">
         <button type="submit" class="btn btn-primary">Adicionar</button>

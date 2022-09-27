@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{{ asset('css/semigual.css') }}">
 </head>
 
-<body>
+<body> 
     <div class="container form-signin rounded-3 border border-2 form-control w-100 m-auto">
         <div class="rounded border" style="padding: 20px;">
             <div class="text-center">
