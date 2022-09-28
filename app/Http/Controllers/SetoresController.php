@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SemIgualFormRequest;
 use Illuminate\Http\Request;
 use App\Models\Setor;
 
@@ -36,7 +37,7 @@ class SetoresController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SemIgualFormRequest $request)
     {
         $setor = Setor::create($request->all());
         return to_route('setores.index')
@@ -74,7 +75,7 @@ class SetoresController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(SemIgualFormRequest $request)
     {
         // dd('chegou aqui');
         Setor::findOrFail($request->id)->update($request->all());

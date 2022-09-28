@@ -1,3 +1,7 @@
 <x-layout title='Cadastrar Setor'>
-    <x-setores.form :action="route('setores.store')" :nome="old('nome')" :update="false" />
+    <x-cad :action="route('setores.store')" 
+    {{-- :nome = "$nome" --}}
+    descForm="Preencha o formulário de setor"
+    
+    />
 </x-layout>

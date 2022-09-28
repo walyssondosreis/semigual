@@ -33,5 +33,7 @@ Route::controller(SetoresController::class)->group(function(){
     Route::put('/setores/atualizar/{id}','update')->name('setores.update');
     Route::delete('/setores/deletar/{id}','destroy')->name('setores.destroy');
 });
-
+Route::get('/teste', function(){
+    return view('welcome');
+});
 

@@ -1,6 +1,8 @@
 <x-layout title="Editar Setor: {{ $setor->nome }}">
-    <x-setores.form :action="route('setores.update', $setor->id)" 
+    <x-edit :action="route('setores.update', $setor->id)" 
     :nome="$setor->nome" 
     :descricao="$setor->descricao"
-    :update="true"/>
+    descForm="Preencha o formulário de setor"
+    />
 </x-layout>
+
