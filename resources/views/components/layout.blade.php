@@ -14,9 +14,20 @@
     <div class="container form-signin rounded-3 border border-2 form-control m-auto">
         <div class="rounded border" style="padding: 20px;">
             <div class="text-center">
-                <img class="mb-4" src="{{ url('picture/logox1.png') }}" alt="" width="60" height="40">
+                <img class="mb-4" src="{{ asset('picture/logox1.png') }}" alt="" width="60" height="40">
                 <h1 class="fs-6">SISTEMA SEM IGUAL <br> {!! mb_strtoupper($title) !!} </h1>
             </div>
+            
+            @if($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif          
+
             {{ $slot }}
         </div>
     </div>
