@@ -1,10 +1,10 @@
-<x-layout title='Cadastrar Setor'>
+<x-layout title='Cadastrar Perfil'>
     
-    <form action={{ route('setores.store') }} method="POST">
+    <form action={{ route('perfis.store') }} method="POST">
         <!-- @CSRF é necessário para que o formulário enviado seja reconhecido pelo servidor -->
         @csrf
     
-        <div class="form-text mb-2 text-center"> Preencha o formulário de setor </div>
+        <div class="form-text mb-2 text-center"> Preencha o formulário de perfil </div>
         {{-- <div class="form-text mb-2 text-center">Preencha este formulário</div> --}}
         
         <input type="text" id="nome" name="nome" class="form-control mb-2" placeholder="Nome">
@@ -13,7 +13,7 @@
     
         <div class="text-center mt-3">
             <button type="submit" class="btn btn-primary botao">Adicionar</button>
-            <a href="{{ route('setores.index') }}" class="btn btn-dark botao">Cancelar</a>
+            <a href="{{ route('perfis.index') }}" class="btn btn-dark botao">Cancelar</a>
         </div>
     </form>
     

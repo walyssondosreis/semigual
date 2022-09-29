@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SemIgualFormRequest;
 use Illuminate\Http\Request;
+use App\Models\Alvo;
+
 
 class AlvosController extends Controller
 {
@@ -11,9 +14,11 @@ class AlvosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $alvos = Alvo::all();
+        $mensagemSucesso = session('mensagem.sucesso');
+        return view('alvos.index', compact('alvos', 'mensagemSucesso'));
     }
 
     /**
@@ -23,7 +28,7 @@ class AlvosController extends Controller
      */
     public function create()
     {
-        //
+        return view('alvos.create');
     }
 
     /**
@@ -32,9 +37,11 @@ class AlvosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SemIgualFormRequest $request)
     {
-        //
+        $alvo = Alvo::create($request->all());
+        return to_route('alvos.index')
+            ->with('mensagem.sucesso', "Alvo '{$alvo->nome}' adicionado com sucesso");
     }
 
     /**
@@ -56,7 +63,9 @@ class AlvosController extends Controller
      */
     public function edit($id)
     {
-        //
+        // dd($alvos);
+        $alvo = Alvo::findOrFail($id);
+        return view('alvos.edit')->with('alvo', $alvo);
     }
 
     /**
@@ -66,9 +75,13 @@ class AlvosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SemIgualFormRequest $request)
     {
-        //
+        // dd('chegou aqui');
+        Alvo::findOrFail($request->id)->update($request->all());
+
+        return to_route('alvos.index')
+        ->with('mensagem.sucesso',"Alvo atualizado com sucesso");
     }
 
     /**
@@ -79,6 +92,10 @@ class AlvosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Alvo::findOrFail($id)->delete();
+
+        return to_route('alvos.index')
+        ->with('mensagem.sucesso',"Alvo removido com sucesso");
     }
+
 }

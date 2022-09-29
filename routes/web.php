@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\AlvosController;
+use App\Http\Controllers\CategoriasController;
 use App\Http\Controllers\ChamadosController;
+use App\Http\Controllers\EstadosController;
+use App\Http\Controllers\PerfisController;
 use App\Http\Controllers\SetoresController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return to_route('setores.index');
+    return to_route('perfis.index');
 });
 
 // Grupo de Rotas para : Chamados
@@ -33,7 +37,43 @@ Route::controller(SetoresController::class)->group(function(){
     Route::put('/setores/atualizar/{id}','update')->name('setores.update');
     Route::delete('/setores/deletar/{id}','destroy')->name('setores.destroy');
 });
-Route::get('/teste', function(){
-    return view('welcome');
+
+// Grupo de Rotas para : Perfis
+Route::controller(PerfisController::class)->group(function(){
+    Route::get('/perfis','index')->name('perfis.index');
+    Route::get('/perfis/criar','create')->name('perfis.create');
+    Route::get('/perfis/editar/{id}','edit')->name('perfis.edit');
+    Route::post('/perfis/salvar','store')->name('perfis.store');
+    Route::put('/perfis/atualizar/{id}','update')->name('perfis.update');
+    Route::delete('/perfis/deletar/{id}','destroy')->name('perfis.destroy');
 });
 
+// Grupo de Rotas para : Alvos
+Route::controller(AlvosController::class)->group(function(){
+    Route::get('/alvos','index')->name('alvos.index');
+    Route::get('/alvos/criar','create')->name('alvos.create');
+    Route::get('/alvos/editar/{id}','edit')->name('alvos.edit');
+    Route::post('/alvos/salvar','store')->name('alvos.store');
+    Route::put('/alvos/atualizar/{id}','update')->name('alvos.update');
+    Route::delete('/alvos/deletar/{id}','destroy')->name('alvos.destroy');
+});
+
+// Grupo de Rotas para : Categorias
+Route::controller(CategoriasController::class)->group(function(){
+    Route::get('/categorias','index')->name('categorias.index');
+    Route::get('/categorias/criar','create')->name('categorias.create');
+    Route::get('/categorias/editar/{id}','edit')->name('categorias.edit');
+    Route::post('/categorias/salvar','store')->name('categorias.store');
+    Route::put('/categorias/atualizar/{id}','update')->name('categorias.update');
+    Route::delete('/categorias/deletar/{id}','destroy')->name('categorias.destroy');
+});
+
+// Grupo de Rotas para : Estados
+Route::controller(EstadosController::class)->group(function(){
+    Route::get('/estados','index')->name('estados.index');
+    Route::get('/estados/criar','create')->name('estados.create');
+    Route::get('/estados/editar/{id}','edit')->name('estados.edit');
+    Route::post('/estados/salvar','store')->name('estados.store');
+    Route::put('/estados/atualizar/{id}','update')->name('estados.update');
+    Route::delete('/estados/deletar/{id}','destroy')->name('estados.destroy');
+});

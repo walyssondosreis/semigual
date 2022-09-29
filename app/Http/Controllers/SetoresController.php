@@ -97,4 +97,5 @@ class SetoresController extends Controller
         return to_route('setores.index')
         ->with('mensagem.sucesso',"Setor removido com sucesso");
     }
+
 }

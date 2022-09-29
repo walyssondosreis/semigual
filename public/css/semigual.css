@@ -1,16 +1,15 @@
 
 
-/* body {
-  display: flex;
+body {
+  /* display: flex; */
   align-items: center;
   padding-top: 40px;
   padding-bottom: 40px;
   height: 100%;
-
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100% 100%;
-} */
+}
 
 .botao {
   position: relative;

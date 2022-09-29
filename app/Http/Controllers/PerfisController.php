@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SemIgualFormRequest;
 use Illuminate\Http\Request;
+use App\Models\Perfil;
+
 
 class PerfisController extends Controller
 {
@@ -11,9 +14,11 @@ class PerfisController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $perfis = Perfil::all();
+        $mensagemSucesso = session('mensagem.sucesso');
+        return view('perfis.index', compact('perfis', 'mensagemSucesso'));
     }
 
     /**
@@ -23,7 +28,7 @@ class PerfisController extends Controller
      */
     public function create()
     {
-        //
+        return view('perfis.create');
     }
 
     /**
@@ -32,9 +37,11 @@ class PerfisController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SemIgualFormRequest $request)
     {
-        //
+        $perfil = Perfil::create($request->all());
+        return to_route('perfis.index')
+            ->with('mensagem.sucesso', "Perfil '{$perfil->nome}' adicionado com sucesso");
     }
 
     /**
@@ -56,7 +63,9 @@ class PerfisController extends Controller
      */
     public function edit($id)
     {
-        //
+        // dd($perfis);
+        $perfil = Perfil::findOrFail($id);
+        return view('perfis.edit')->with('perfil', $perfil);
     }
 
     /**
@@ -66,9 +75,13 @@ class PerfisController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SemIgualFormRequest $request)
     {
-        //
+        // dd('chegou aqui');
+        Perfil::findOrFail($request->id)->update($request->all());
+
+        return to_route('perfis.index')
+        ->with('mensagem.sucesso',"Perfil atualizado com sucesso");
     }
 
     /**
@@ -79,6 +92,10 @@ class PerfisController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Perfil::findOrFail($id)->delete();
+
+        return to_route('perfis.index')
+        ->with('mensagem.sucesso',"Perfil removido com sucesso");
     }
+
 }

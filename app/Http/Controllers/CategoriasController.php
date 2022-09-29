@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SemIgualFormRequest;
 use Illuminate\Http\Request;
+use App\Models\Categoria;
+
 
 class CategoriasController extends Controller
 {
@@ -11,9 +14,11 @@ class CategoriasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $categorias = Categoria::all();
+        $mensagemSucesso = session('mensagem.sucesso');
+        return view('categorias.index', compact('categorias', 'mensagemSucesso'));
     }
 
     /**
@@ -23,7 +28,7 @@ class CategoriasController extends Controller
      */
     public function create()
     {
-        //
+        return view('categorias.create');
     }
 
     /**
@@ -32,9 +37,11 @@ class CategoriasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SemIgualFormRequest $request)
     {
-        //
+        $categoria = Categoria::create($request->all());
+        return to_route('categorias.index')
+            ->with('mensagem.sucesso', "Categoria '{$categoria->nome}' adicionado com sucesso");
     }
 
     /**
@@ -56,7 +63,9 @@ class CategoriasController extends Controller
      */
     public function edit($id)
     {
-        //
+        // dd($categorias);
+        $categoria = Categoria::findOrFail($id);
+        return view('categorias.edit')->with('categoria', $categoria);
     }
 
     /**
@@ -66,9 +75,13 @@ class CategoriasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SemIgualFormRequest $request)
     {
-        //
+        // dd('chegou aqui');
+        Categoria::findOrFail($request->id)->update($request->all());
+
+        return to_route('categorias.index')
+        ->with('mensagem.sucesso',"Categoria atualizado com sucesso");
     }
 
     /**
@@ -79,6 +92,10 @@ class CategoriasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Categoria::findOrFail($id)->delete();
+
+        return to_route('categorias.index')
+        ->with('mensagem.sucesso',"Categoria removido com sucesso");
     }
+
 }

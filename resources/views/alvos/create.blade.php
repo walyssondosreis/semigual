@@ -1,6 +1,6 @@
-<x-layout title='Cadastrar Setor'>
+<x-layout title='Cadastrar Alvo'>
     
-    <form action={{ route('setores.store') }} method="POST">
+    <form action={{ route('alvos.store') }} method="POST">
         <!-- @CSRF é necessário para que o formulário enviado seja reconhecido pelo servidor -->
         @csrf
     
@@ -13,7 +13,7 @@
     
         <div class="text-center mt-3">
             <button type="submit" class="btn btn-primary botao">Adicionar</button>
-            <a href="{{ route('setores.index') }}" class="btn btn-dark botao">Cancelar</a>
+            <a href="{{ route('alvos.index') }}" class="btn btn-dark botao">Cancelar</a>
         </div>
     </form>
     

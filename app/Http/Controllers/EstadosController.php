@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SemIgualFormRequest;
 use Illuminate\Http\Request;
+use App\Models\Estado;
+
 
 class EstadosController extends Controller
 {
@@ -11,9 +14,11 @@ class EstadosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $estados = Estado::all();
+        $mensagemSucesso = session('mensagem.sucesso');
+        return view('estados.index', compact('estados', 'mensagemSucesso'));
     }
 
     /**
@@ -23,7 +28,7 @@ class EstadosController extends Controller
      */
     public function create()
     {
-        //
+        return view('estados.create');
     }
 
     /**
@@ -32,9 +37,11 @@ class EstadosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SemIgualFormRequest $request)
     {
-        //
+        $estado = Estado::create($request->all());
+        return to_route('estados.index')
+            ->with('mensagem.sucesso', "Estado '{$estado->nome}' adicionado com sucesso");
     }
 
     /**
@@ -56,7 +63,9 @@ class EstadosController extends Controller
      */
     public function edit($id)
     {
-        //
+        // dd($estados);
+        $estado = Estado::findOrFail($id);
+        return view('estados.edit')->with('estado', $estado);
     }
 
     /**
@@ -66,9 +75,13 @@ class EstadosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SemIgualFormRequest $request)
     {
-        //
+        // dd('chegou aqui');
+        Estado::findOrFail($request->id)->update($request->all());
+
+        return to_route('estados.index')
+        ->with('mensagem.sucesso',"Estado atualizado com sucesso");
     }
 
     /**
@@ -79,6 +92,10 @@ class EstadosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Estado::findOrFail($id)->delete();
+
+        return to_route('estados.index')
+        ->with('mensagem.sucesso',"Estado removido com sucesso");
     }
+
 }

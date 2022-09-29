@@ -1,4 +1,4 @@
-<x-layout title='Setores'>
+<x-layout title='Categorias'>
 
   @isset($mensagemSucesso)
   <div class="alert alert-success">
@@ -7,13 +7,13 @@
   @endisset            
 
     <ul class="list-group">
-        @foreach ($setores as $setor)
+        @foreach ($categorias as $categoria)
 
         <li class="list-group-item d-flex justify-content-between align-items-center">
-            {{ $setor->nome }}
+            {{ $categoria->nome }}
             <span class="d-flex">
-                <a href="{{ route('setores.edit',$setor->id) }}" class="btn btn-outline-primary edit-btn btn-sm"><ion-icon name="create-outline"></ion-icon></a>
-                <form action="{{ route('setores.destroy',$setor->id) }}" method="POST" class="ms-2">
+                <a href="{{ route('categorias.edit',$categoria->id) }}" class="btn btn-outline-primary edit-btn btn-sm"><ion-icon name="create-outline"></ion-icon></a>
+                <form action="{{ route('categorias.destroy',$categoria->id) }}" method="POST" class="ms-2">
                     @csrf
                     @method('DELETE')
                     <button class="btn btn-outline-danger delete-btn btn-sm"><ion-icon name="trash-outline"></ion-icon></button>
@@ -23,8 +23,8 @@
         @endforeach
     </ul>
     <div class="mt-3 text-center">
-        <a href="{{ route('setores.create') }}" class="btn btn-primary mb-3 botao">Adicionar</a>
-        <a href="{{ route('setores.index') }}" class="btn mb-3 btn-primary btn-dark botao">Cancelar</a>
+        <a href="{{ route('categorias.create') }}" class="btn btn-primary mb-3 botao">Adicionar</a>
+        <a href="{{ route('categorias.index') }}" class="btn mb-3 btn-primary btn-dark botao">Cancelar</a>
     </div>
 
 </x-layout>
@@ -40,7 +40,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-         <form action="{{ route('setores.destroy',$setor->id) }}" method="POST" class="ms-2">
+         <form action="{{ route('categorias.destroy',$categoria->id) }}" method="POST" class="ms-2">
             <div class="modal-body">
             
                 @csrf
