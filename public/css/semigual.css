@@ -1,7 +1,7 @@
 
 
-body {
-  /* display: flex; */
+/* body {
+
   align-items: center;
   padding-top: 40px;
   padding-bottom: 40px;
@@ -9,7 +9,7 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100% 100%;
-}
+} */
 
 .botao {
   position: relative;
