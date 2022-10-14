@@ -12,12 +12,11 @@
 
 <body> 
     <x-navbar> </x-navbar>
-
+    
     <div class="container form-signin rounded-3 border border-2 form-control m-auto">
         <div class="rounded border" style="padding: 20px;">
             <div class="text-center">
-                <img class="mb-4" src="{{ asset('picture/logox1.png') }}" alt="" width="60" height="40">
-                <h1 class="fs-6">SISTEMA SEM IGUAL <br> {!! mb_strtoupper($title) !!} </h1>
+                <h1 class="fs-6">{!! mb_strtoupper($title) !!} </h1>
             </div>
             
             @if($errors->any())
@@ -33,10 +32,6 @@
             {{ $slot }}
         </div>
     </div>
-
-
-     {{-- Campo creditos --}}
-    <p class="mt-3 text-muted text-center">&copy; <?php echo "Vox Conexão " . date('Y') ?></p>
 
     {{-- Bibliotecas de ícones do Ionic --}}
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
