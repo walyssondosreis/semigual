@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Alvo;
+use App\Models\Categoria;
+use App\Models\Setor;
 use Illuminate\Http\Request;
 
 class ChamadosController extends Controller
@@ -13,7 +16,14 @@ class ChamadosController extends Controller
      */
     public function index()
     {
-        return view('chamados.index');
+        $setores = Setor::all();
+        $categorias = Categoria::all();
+        $alvos = Alvo::all();
+
+        return view('chamados.index')
+        ->with('setores',$setores)
+        ->with('categorias',$categorias)
+        ->with('alvos',$alvos);
     }
 
     /**

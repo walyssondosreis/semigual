@@ -4,8 +4,10 @@ use App\Http\Controllers\AlvosController;
 use App\Http\Controllers\CategoriasController;
 use App\Http\Controllers\ChamadosController;
 use App\Http\Controllers\EstadosController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PerfisController;
 use App\Http\Controllers\SetoresController;
+use App\Http\Middleware\Autenticador;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,6 +24,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return to_route('perfis.index');
 });
+
+//Rota de Login
+Route::get('/login',[LoginController::class, 'index'])->name('login');
+Route::post('/login',[LoginController::class, 'index'])->name('login.store');
 
 // Grupo de Rotas para : Chamados
 Route::controller(ChamadosController::class)->group(function(){
@@ -50,9 +56,9 @@ Route::controller(PerfisController::class)->group(function(){
 
 // Grupo de Rotas para : Alvos
 Route::controller(AlvosController::class)->group(function(){
-    Route::get('/alvos','index')->name('alvos.index');
-    Route::get('/alvos/criar','create')->name('alvos.create');
-    Route::get('/alvos/editar/{id}','edit')->name('alvos.edit');
+    Route::get('/alvos','index')->name('alvos.index')->middleware(Autenticador::class);
+    Route::get('/alvos/criar','create')->name('alvos.create')->middleware(Autenticador::class);
+    Route::get('/alvos/editar/{id}','edit')->name('alvos.edit')->middleware(Autenticador::class);
     Route::post('/alvos/salvar','store')->name('alvos.store');
     Route::put('/alvos/atualizar/{id}','update')->name('alvos.update');
     Route::delete('/alvos/deletar/{id}','destroy')->name('alvos.destroy');
