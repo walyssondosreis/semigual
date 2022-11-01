@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return to_route('perfis.index');
+    return to_route('login');
 });
 
 //Rota de Login e Logout
