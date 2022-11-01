@@ -7,6 +7,7 @@ use App\Http\Controllers\EstadosController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PerfisController;
 use App\Http\Controllers\SetoresController;
+use App\Http\Controllers\UsuariosController;
 use App\Http\Middleware\Autenticador;
 use Illuminate\Support\Facades\Route;
 
@@ -27,7 +28,7 @@ Route::get('/', function () {
 
 //Rota de Login
 Route::get('/login',[LoginController::class, 'index'])->name('login');
-Route::post('/login',[LoginController::class, 'index'])->name('login.store');
+Route::post('/login',[LoginController::class, 'store'])->name('login.store');
 
 // Grupo de Rotas para : Chamados
 Route::controller(ChamadosController::class)->group(function(){
@@ -82,4 +83,14 @@ Route::controller(EstadosController::class)->group(function(){
     Route::post('/estados/salvar','store')->name('estados.store');
     Route::put('/estados/atualizar/{id}','update')->name('estados.update');
     Route::delete('/estados/deletar/{id}','destroy')->name('estados.destroy');
+});
+
+// Grupo de Rotas para : Usuarios
+Route::controller(UsuariosController::class)->group(function(){
+    Route::get('/usuarios','index')->name('usuarios.index');
+    Route::get('/usuarios/criar','create')->name('usuarios.create');
+    Route::get('/usuarios/editar/{id}','edit')->name('usuarios.edit');
+    Route::post('/usuarios/salvar','store')->name('usuarios.store');
+    Route::put('/usuarios/atualizar/{id}','update')->name('usuarios.update');
+    Route::delete('/usuarios/deletar/{id}','destroy')->name('usuarios.destroy');
 });

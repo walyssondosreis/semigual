@@ -37,7 +37,9 @@ class LoginController extends Controller
     public function store(Request $request)
     {
         //
-        dd(Auth::attempt($request->all()));
+        if(!Auth::attempt($request->all())){
+            return redirect()->back()->withErrors(['Usuario nao autorizado']);
+        }
     }
 
     /**
