@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->timestamps(); // Define o 'created_at' & 'updated_at'
             $table->string('nome');
-            $table->string('sobrenome');
             $table->string('nome_usr');
             $table->foreignId('perfil_id')->constrained('perfis');
             $table->foreignId('setor_id')->constrained('setores');

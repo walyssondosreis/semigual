@@ -37,9 +37,10 @@ class LoginController extends Controller
     public function store(Request $request)
     {
         //
-        if(!Auth::attempt($request->all())){
+        if(!Auth::attempt($request->only(['nome_usr','password']))){
             return redirect()->back()->withErrors(['Usuario nao autorizado']);
         }
+        return to_route('chamados.index');
     }
 
     /**
@@ -82,8 +83,13 @@ class LoginController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy()
     {
         //
+        // dd('deslogado poha');
+        Auth::logout();
+        
+        return to_route('login');
+
     }
 }

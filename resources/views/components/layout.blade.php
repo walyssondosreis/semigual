@@ -11,7 +11,10 @@
 </head>
 
 <body> 
-    <x-navbar> </x-navbar>
+
+    @if (Auth::check())
+        <x-navbar> </x-navbar>
+    @endif
     
     <div class="container form-signin rounded-3 border border-2 form-control m-auto">
         <div class="rounded border" style="padding: 20px;">

@@ -26,9 +26,10 @@ Route::get('/', function () {
     return to_route('perfis.index');
 });
 
-//Rota de Login
+//Rota de Login e Logout
 Route::get('/login',[LoginController::class, 'index'])->name('login');
 Route::post('/login',[LoginController::class, 'store'])->name('login.store');
+Route::get('/logout',[LoginController::class, 'destroy'])->name('logout');
 
 // Grupo de Rotas para : Chamados
 Route::controller(ChamadosController::class)->group(function(){

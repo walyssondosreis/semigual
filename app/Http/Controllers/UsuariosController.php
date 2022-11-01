@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Usuario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UsuariosController extends Controller
 {
@@ -35,7 +38,13 @@ class UsuariosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $dados = $request->except(['token']);
+        $dados['password'] = Hash::make($dados['password']);
+        $usuario= Usuario::create($dados);
+        
+        Auth::login($usuario);
+
+        return to_route('chamados.index');
     }
 
     /**

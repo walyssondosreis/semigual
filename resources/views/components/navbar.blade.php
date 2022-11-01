@@ -12,7 +12,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav mr-auto">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{{ route('chamados.index') }}">Início</a>
           </li>
@@ -35,8 +35,17 @@
               <li><a class="dropdown-item disabled" href="#">Usuário de sistema</a></li>
             </ul>
           </li>
-        </ul>
+          <li class="nav-item">
+            <a href="{{ route('logout') }}" class="nav-link">Logout</a>  
+          </li>
+        </ul>   
       </div>
+
+      <div class="navbar-text justify-content-end navbar-collapse">
+        {{-- Bem Vindo! {{ explode(' ',Auth::user()->nome)[0] }}   --}}
+        Bem Vindo! {{ Auth::user()->nome }}  
+      </div>
+
     </div>
   </nav>
 </div>
