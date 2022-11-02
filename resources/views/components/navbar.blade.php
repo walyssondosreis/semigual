@@ -1,6 +1,7 @@
 <div class="mb-5">
 <nav class="navbar navbar-dark navbar-expand-lg fixed-top" style="background-color: #11012d">
     <div class="container-fluid">
+        
       <a class="navbar-brand" href="">
         <img src={{ asset('picture/logox2.png') }} alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
         VOX
@@ -8,9 +9,13 @@
           Sem Igual
         </span>
       </a>
+  
+      @auth
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+
+      
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
@@ -36,7 +41,15 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="{{ route('logout') }}" class="nav-link">Logout</a>  
+            <form action="{{ route('logout') }}" method="post">
+              @csrf
+              <a href="{{ route('logout') }}" class="nav-link" 
+              onclick="event.preventDefault();
+              this.closest('form').submit();">
+                Logout
+              </a>              
+  
+            </form>
           </li>
         </ul>   
       </div>
@@ -45,7 +58,17 @@
         {{-- Bem Vindo! {{ explode(' ',Auth::user()->nome)[0] }}   --}}
         Bem Vindo! {{ Auth::user()->nome }}  
       </div>
-
+      @endauth
+      
+      @guest
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a href="{{ route('usuarios.create') }}" class="nav-link">Registrar</a>
+          </li>
+        </ul>
+      
+      @endguest
+      
     </div>
   </nav>
 </div>

@@ -29,7 +29,7 @@ Route::get('/', function () {
 //Rota de Login e Logout
 Route::get('/login',[LoginController::class, 'index'])->name('login');
 Route::post('/login',[LoginController::class, 'store'])->name('login.store');
-Route::get('/logout',[LoginController::class, 'destroy'])->name('logout');
+Route::post('/logout',[LoginController::class, 'destroy'])->name('logout');
 
 // Grupo de Rotas para : Chamados
 Route::controller(ChamadosController::class)->group(function(){
@@ -59,8 +59,8 @@ Route::controller(PerfisController::class)->group(function(){
 // Grupo de Rotas para : Alvos
 Route::controller(AlvosController::class)->group(function(){
     Route::get('/alvos','index')->name('alvos.index')->middleware(Autenticador::class);
-    Route::get('/alvos/criar','create')->name('alvos.create')->middleware(Autenticador::class);
-    Route::get('/alvos/editar/{id}','edit')->name('alvos.edit')->middleware(Autenticador::class);
+    Route::get('/alvos/criar','create')->name('alvos.create');
+    Route::get('/alvos/editar/{id}','edit')->name('alvos.edit');
     Route::post('/alvos/salvar','store')->name('alvos.store');
     Route::put('/alvos/atualizar/{id}','update')->name('alvos.update');
     Route::delete('/alvos/deletar/{id}','destroy')->name('alvos.destroy');

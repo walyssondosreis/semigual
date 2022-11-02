@@ -14,7 +14,7 @@
     
         <div class="text-center mt-3">
             <button type="submit" class="btn btn-primary botao">Entrar</button>
-            <a href="{{ route('usuarios.create') }}" class="btn btn-dark botao">Registrar</a>
+            
         </div>
     </form>
     
