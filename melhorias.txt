@@ -1,0 +1,11 @@
+> Criar formulario de cadastro de usuário separado para quando deslogado e para cad do admin
+
+> Criar tela de exibição , ediçao de usuários cadastrados
+
+> Formulario CadUsuario: Confirmação de senha.
+
+> Formulario CadChamado: Enviar multiplos arq de imagens /xls texto e submeter
+
+> Alterar rotas que estao diretamente par chamados.index para home
+
+

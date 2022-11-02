@@ -4,16 +4,15 @@
 
         {{-- Campo nome de usuário --}}
       <div class="form-floating rounded mt-3">
-        <input readonly name="usuario" type="text" class="form-control" id="floatingInput" placeholder="name" value="walyssondosreis">
+        <input readonly name="usuario" type="text" class="form-control" id="floatingInput" placeholder="name" value="{{ Auth::user()->nome_usr }}">
         <label for="floatingInput">Chamado aberto pelo usuário</label>
       </div>
 
       {{-- Campo setor --}}
       <div class="input-group form-floating">
         <select name="setor" class="form-select" id="inputGroupSelect01">
-            <option value="0" selected></option>
              @foreach ($setores as $setor)
-                 <option value="{{ $setor->id }}"> {{ $setor->nome }}</option>
+                 <option value="{{ $setor->id }}" @php if($setor->id == Auth::user()->setor_id) echo('selected'); @endphp> {{ $setor->nome }}</option>
              @endforeach
          
         </select>

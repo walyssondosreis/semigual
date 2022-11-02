@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Perfil;
+use App\Models\Setor;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -27,7 +29,10 @@ class UsuariosController extends Controller
     public function create()
     {
         //
-        return view('usuarios.create');
+        $perfis = Perfil::all();
+        $setores = Setor::all();
+        
+        return view('usuarios.create',compact('perfis','setores'));
     }
 
     /**

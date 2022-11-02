@@ -15,7 +15,18 @@
         
         <input type="password" id="password" name="password" class="form-control mb-2" placeholder="Senha">
 
-    
+        <select class="form-select mb-2" name="perfil_id">
+            @foreach ($perfis as $perfil)
+                <option value="{{ $perfil->id }}" @if ($perfil->id == 1) selected @endif>{{ $perfil->nome }}</option>
+            @endforeach
+        </select>
+
+        <select class="form-select mb-2" name="setor_id">
+            @foreach ($setores as $setor)
+                <option value="{{ $setor->id }}">{{ $setor->nome }}</option>
+            @endforeach
+        </select>
+
         <div class="text-center mt-3">
             <button type="submit" class="btn btn-primary botao">Salvar</button>
             <a href="{{ route('login') }}" class="btn btn-dark botao">Cancelar</a>

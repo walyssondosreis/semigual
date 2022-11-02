@@ -12,14 +12,16 @@ class Usuario extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    // const CREATED_AT = 'datah_ini';
-    // const UPDATED_AT = 'datah_alt';
+     //const CREATED_AT = 'datah_ini';
+     //const UPDATED_AT = 'datah_alt';
 	
 	protected $fillable = [
         'nome',
         'nome_usr',
         'email',
         'password',
+        'perfil_id',
+        'setor_id',
     ];
 	protected $hidden = [
         'password',
