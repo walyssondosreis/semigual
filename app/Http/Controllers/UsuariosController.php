@@ -19,12 +19,10 @@ class UsuariosController extends Controller
     public function index()
     {
         $usuarios = Usuario::all();
-        $perfis = Perfil::all();
-        $setores = Setor::all();
         $mensagemSucesso = session('mensagem.sucesso');
         
         return view('usuarios.index',
-            compact('usuarios', 'mensagemSucesso','perfis','setores'));
+            compact('usuarios', 'mensagemSucesso'));
     }
 
     /**
@@ -78,7 +76,9 @@ class UsuariosController extends Controller
     public function edit($id)
     {
         $usuario = Usuario::findOrFail($id);
-        return view('usuarios.edit')->with('usuario', $usuario);
+        $perfis = Perfil::all();
+        $setores = Setor::all();
+        return view('usuarios.edit',compact('usuario','perfis','setores'));
     }
 
     /**
@@ -90,7 +90,12 @@ class UsuariosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $dados = $request->except(['token']);
+
+        Usuario::findOrFail($id)->update($dados);
+
+        return to_route('usuarios.index')
+        ->with('mensagem.sucesso',"Usuário atualizado com sucesso");
     }
 
     /**

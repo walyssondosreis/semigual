@@ -17,7 +17,7 @@
 
         <select class="form-select mb-2" name="perfil_id">
             @foreach ($perfis as $perfil)
-                <option value="{{ $perfil->id }}" @if ($perfil->id == 1) selected @endif>{{ $perfil->nome }}</option>
+                <option value="{{ $perfil->id }}" @if ($perfil->id == 2) selected @endif>{{ $perfil->nome }}</option>
             @endforeach
         </select>
 
