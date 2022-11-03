@@ -18,7 +18,13 @@ class UsuariosController extends Controller
      */
     public function index()
     {
-        //
+        $usuarios = Usuario::all();
+        $perfis = Perfil::all();
+        $setores = Setor::all();
+        $mensagemSucesso = session('mensagem.sucesso');
+        
+        return view('usuarios.index',
+            compact('usuarios', 'mensagemSucesso','perfis','setores'));
     }
 
     /**
@@ -71,7 +77,8 @@ class UsuariosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $usuario = Usuario::findOrFail($id);
+        return view('usuarios.edit')->with('usuario', $usuario);
     }
 
     /**

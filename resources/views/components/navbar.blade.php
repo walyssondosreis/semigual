@@ -37,7 +37,7 @@
               <li><a class="dropdown-item" href="{{ route('estados.index') }}">Estado de iteração</a></li>
               <li><a class="dropdown-item" href="{{ route('perfis.index') }}">Perfil de usuário</a></li>
               <li><a class="dropdown-item" href="{{ route('setores.index') }}">Setor de usuário</a></li>
-              <li><a class="dropdown-item disabled" href="#">Usuário de sistema</a></li>
+              <li><a class="dropdown-item" href="{{ route('usuarios.index') }}">Usuário de sistema</a></li>
             </ul>
           </li>
           <li class="nav-item">
