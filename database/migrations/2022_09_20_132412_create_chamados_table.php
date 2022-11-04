@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('usuario_id')->constrained();
             $table->unsignedTinyInteger('prioridade')->nullable();
             $table->unsignedBigInteger('tecnico_id')->nullable();
+    
         });
     }
 

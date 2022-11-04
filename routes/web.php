@@ -39,6 +39,7 @@ Route::controller(ChamadosController::class)
     ->middleware(Autenticador::class)
     ->group(function(){
         Route::get('/chamados','index')->name('chamados.index');
+        Route::get('/chamados/criar','create')->name('chamados.create');
 });
 
 // Grupo de Rotas para : Setores

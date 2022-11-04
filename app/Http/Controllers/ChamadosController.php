@@ -16,14 +16,7 @@ class ChamadosController extends Controller
      */
     public function index()
     {
-        $setores = Setor::all();
-        $categorias = Categoria::all();
-        $alvos = Alvo::all();
-
-        return view('chamados.index')
-        ->with('setores',$setores)
-        ->with('categorias',$categorias)
-        ->with('alvos',$alvos);
+        //
     }
 
     /**
@@ -33,7 +26,14 @@ class ChamadosController extends Controller
      */
     public function create()
     {
-        //
+        $setores = Setor::all();
+        $categorias = Categoria::all();
+        $alvos = Alvo::all();
+
+        return view('chamados.create')
+        ->with('setores',$setores)
+        ->with('categorias',$categorias)
+        ->with('alvos',$alvos);
     }
 
     /**

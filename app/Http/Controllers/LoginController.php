@@ -16,7 +16,7 @@ class LoginController extends Controller
     {
         //
         if(Auth::check()){
-            return to_route('chamados.index');
+            return to_route('chamados.create');
         }
         return view('login.index');
     }
@@ -43,7 +43,7 @@ class LoginController extends Controller
         if(!Auth::attempt($request->only(['nome_usr','password']))){
             return redirect()->back()->withErrors(['Usuario nao autorizado']);
         }
-        return to_route('chamados.index');
+        return to_route('home');
     }
 
     /**

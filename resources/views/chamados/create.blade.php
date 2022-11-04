@@ -22,7 +22,6 @@
       {{-- Campo categoria --}}
       <div class="input-group mb-3 form-floating">
         <select name="categoria" class="form-select" id="inputGroupSelect02">
-          <option value="0"></option>
           @foreach ($categorias as $categoria )
             <option value="{{ $categoria->id }}"> {{ $categoria->nome }}</option>
           @endforeach
