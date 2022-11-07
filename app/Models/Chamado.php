@@ -25,6 +25,6 @@ class Chamado extends Model
     }
     public function categorias()
     {
-        return $this->belongsToMany(Categoria::class, 'chamados_categorias','categoria_id','chamado_id');
+        return $this->belongsTo(Categoria::class, 'categoria_id');
     }
 }
