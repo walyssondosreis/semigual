@@ -40,6 +40,7 @@ Route::controller(ChamadosController::class)
     ->group(function(){
         Route::get('/chamados','index')->name('chamados.index');
         Route::get('/chamados/criar','create')->name('chamados.create');
+        Route::post('/chamados/salvar','store')->name('chamados.store');
 });
 
 // Grupo de Rotas para : Setores

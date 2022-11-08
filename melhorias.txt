@@ -8,4 +8,6 @@
 
 > Alterar rotas que estao diretamente par chamados.index para home
 
+- Criar sigla para setores
 
+- Submeter alvo

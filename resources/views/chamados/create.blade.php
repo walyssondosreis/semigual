@@ -1,7 +1,7 @@
 <x-layout title="Abrir Chamado">
 
-    <form action="" class="text-center">
-
+    <form action="{{ route('chamados.store') }}" method="POST" class="text-center">
+      @csrf
         {{-- Campo nome de usuário --}}
       <div class="form-floating rounded mt-3">
         <input readonly name="usuario" type="text" class="form-control" id="floatingInput" placeholder="name" value="{{ Auth::user()->nome_usr }}">
@@ -34,8 +34,8 @@
         <div class="postion-sticky" style="max-width: 500px">
             @foreach ($alvos as $alvo)
 
-            <input type="checkbox" class="btn-check" name="{{ $alvo->id }}" id="{{ $alvo->id }}"  value="{{ $alvo->id }}"  autocomplete="off">
-            <label class="botao btn btn-outline-primary " style="min-height: 55px" for="{{ $alvo->id }}" > {{ $alvo->nome }} </label>
+            <input type="checkbox" class="btn-check" name="alvos[]" id="alvo{{ $alvo->id }}"  value="{{ $alvo->id }}"  autocomplete="off">
+            <label class="botao btn btn-outline-primary " style="min-height: 55px" for="alvo{{ $alvo->id }}" > {{ $alvo->nome }} </label>
                 
             @endforeach
         </div>
