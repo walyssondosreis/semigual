@@ -9,6 +9,7 @@ use App\Http\Controllers\PerfisController;
 use App\Http\Controllers\SetoresController;
 use App\Http\Controllers\UsuariosController;
 use App\Http\Middleware\Autenticador;
+use App\Mail\UsuarioCreated;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,6 +26,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return to_route('login');
 })->name('home');
+
+Route::get('/email', function(){
+    return new UsuarioCreated();
+});
 
 //Grupo de Rotas para : Login e Logout
 Route::controller(LoginController::class)
