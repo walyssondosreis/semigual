@@ -112,6 +112,9 @@ class UsuariosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Usuario::findOrFail($id)->delete();
+
+        return to_route('usuarios.index')
+        ->with('mensagem.sucesso',"Usuário removido com sucesso");
     }
 }
