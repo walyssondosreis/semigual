@@ -16,9 +16,10 @@ return new class extends Migration
         Schema::create('chamados', function (Blueprint $table) {
             $table->id();
             $table->foreignId('usuario_id')->constrained();
-            $table->unsignedTinyInteger('prioridade')->nullable();
+            $table->unsignedTinyInteger('prioridade');
             $table->unsignedBigInteger('tecnico_id')->nullable();
-            $table->unsignedBigInteger('categoria_id')->nullable();
+            $table->unsignedBigInteger('categoria_id');
+            $table->unsignedBigInteger('setor_id');
     
         });
     }

@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Estado;
+use App\Models\Chamado;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 
 class Interacao extends Model
@@ -14,10 +16,6 @@ class Interacao extends Model
     const CREATED_AT = 'datah_ini';
     const UPDATED_AT = 'datah_alt';
 
-    public function alvos()
-    {
-        return $this->belongsTo(Alvo::class,'alvo_id');
-    }
     public function estados()
     {
         return $this->belongsTo(Estado::class,'estado_id');

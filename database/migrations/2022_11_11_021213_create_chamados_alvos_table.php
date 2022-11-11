@@ -13,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('interacoes', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps(); // Define o 'created_at' & 'updated_at'
-            $table->text('descricao');
-            $table->foreignId('estado_id')->constrained();
-            $table->foreignId('chamado_id')->constrained();
+        Schema::create('chamados_alvos', function (Blueprint $table) {
+           // $table->id();
+           // $table->timestamps();
+           $table->foreignId('chamado_id')->constrained('chamados');
+           $table->foreignId('alvo_id')->constrained('alvos');
         });
     }
 
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('interacoes');
+        Schema::dropIfExists('chamados_alvos');
     }
 };

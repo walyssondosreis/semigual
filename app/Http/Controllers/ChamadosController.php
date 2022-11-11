@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Alvo;
 use App\Models\Categoria;
+use App\Models\Chamado;
+use App\Models\Estado;
 use App\Models\Setor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ChamadosController extends Controller
 {
@@ -45,7 +48,16 @@ class ChamadosController extends Controller
     public function store(Request $request)
     {
         //
-        dd($request);
+        $dados_chamado= $request->only('usuario','setor','categoria','alvos');
+        $dados_interacao = $request->only('resumo');
+        $estado_ini=DB::table('estados')
+            ->where('nome','Não atendido')
+            ->get()[0]->id;
+        $chamado = Chamado::create($dados_chamado);
+        dd($chamado); 
+
+
+        // dd($dados_interacao);
     }
 
     /**

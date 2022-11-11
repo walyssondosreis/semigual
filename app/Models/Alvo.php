@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Chamado;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Alvo extends Model
 {
@@ -13,11 +14,10 @@ class Alvo extends Model
     public $timestamps = false ; 
     protected $fillable = ['nome','descricao'];
 
-    public function interacoes()
+    public function chamados()
     {
-        return $this->hasMany(Interacao::class,'interacao_id');
+        return $this->belongsToMany(Chamado::class,'chamados_alvo','alvo_id','chamado_id');
     }
-
     protected static function booted()
     {
         self::addGlobalScope('ordered',function(Builder $queryBuilder){

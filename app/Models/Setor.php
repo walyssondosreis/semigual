@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Chamado;
+use App\Models\Usuario;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Setor extends Model
 {
@@ -18,6 +20,11 @@ class Setor extends Model
     {
         return $this->hasMany(Usuario::class,'usuario_id');
     }
+    public function chamados()
+    {
+        return $this->hasMany(Chamado::class, 'chamado_id');
+    }
+
     protected static function booted()
     {
         self::addGlobalScope('ordered',function(Builder $queryBuilder){
