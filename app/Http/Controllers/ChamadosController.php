@@ -33,11 +33,13 @@ class ChamadosController extends Controller
         $setores = Setor::all();
         $categorias = Categoria::all();
         $alvos = Alvo::all();
+        $mensagemSucesso = session('mensagem.sucesso');
 
         return view('chamados.create')
         ->with('setores',$setores)
         ->with('categorias',$categorias)
-        ->with('alvos',$alvos);
+        ->with('alvos',$alvos)
+        ->with('mensagemSucesso',$mensagemSucesso);
     }
 
     /**
@@ -72,6 +74,7 @@ class ChamadosController extends Controller
         }
 
         return to_route('chamados.create')->with('mensagem.sucesso',"Chamado criado com Sucesso!");
+
     }
 
     /**

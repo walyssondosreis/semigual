@@ -41,7 +41,5 @@ INSERT INTO "alvos" ("id","nome","descricao") VALUES (1,'Gerenet UWBR',NULL),
  (8,'PABX Fastway',NULL),
  (9,'Stratws Siteware',NULL),
  (10,'Elite Software',NULL);
-CREATE UNIQUE INDEX IF NOT EXISTS "usuarios_email_unique" ON "usuarios" (
-	"email"
-);
+
 COMMIT;
