@@ -1,10 +1,20 @@
+
+
 <x-layout title="Abrir Chamado">
+
+
+    @isset($mensagemSucesso)
+    <div class="alert alert-success">
+    {{ $mensagemSucesso }}
+    </div>
+    @endisset 
 
     <form action="{{ route('chamados.store') }}" method="POST" class="text-center">
       @csrf
         {{-- Campo nome de usuário --}}
       <div class="form-floating rounded mt-3">
-        <input readonly name="usuario" type="text" class="form-control" id="floatingInput" placeholder="name" value="{{ Auth::user()->nome_usr }}">
+        <input type="hidden" name="usuario" value="{{ Auth::user()->id }}">
+        <input readonly type="text" class="form-control" id="floatingInput" placeholder="name" value="{{ Auth::user()->nome_usr }}">
         <label for="floatingInput">Chamado aberto pelo usuário</label>
       </div>
 
@@ -60,4 +70,6 @@
 
     </form>
 
+
 </x-layout>
+

@@ -20,6 +20,8 @@ class Chamado extends Model
         'prioridade'=>0,
     ];
 
+    protected $fillable= ['usuario_id','prioridade','tecnico_id','categoria_id','setor_id'];
+
     public function interacoes()
     {
         return $this->hasMany(Interacao::class, 'interacao_id');

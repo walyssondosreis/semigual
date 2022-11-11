@@ -13,8 +13,10 @@ class Interacao extends Model
     use HasFactory;
 
     protected $table = 'interacoes';
-    const CREATED_AT = 'datah_ini';
-    const UPDATED_AT = 'datah_alt';
+    // const CREATED_AT = 'datah_ini';
+    // const UPDATED_AT = 'datah_alt';
+
+    protected $fillable = ['descricao','estado_id','chamado_id'];
 
     public function estados()
     {
