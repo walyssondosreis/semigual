@@ -44,6 +44,6 @@ class Chamado extends Model
     }
     public function alvos()
     {
-        return $this->belongsToMany(Alvo::class,'chamados_alvos','alvo_id','chamado_id');
+        return $this->belongsToMany(Alvo::class,'chamados_alvos','chamado_id','alvo_id');
     }
 }

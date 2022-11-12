@@ -21,6 +21,9 @@ class ChamadosController extends Controller
     public function index()
     {
         //
+        $chamados = Chamado::all();
+        return view('chamados.index')
+        ->with('chamados',$chamados);
     }
 
     /**

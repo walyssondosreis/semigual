@@ -22,13 +22,13 @@
             <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Início</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" href="#">Painel</a>
+            <a class="nav-link active" href="{{ route('chamados.index') }}">Painel</a>
           </li>
           <li class="nav-item">
             <a class="nav-link disabled" href="#">Ajuda</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link active dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
               Configurar
             </a>
             <ul class="dropdown-menu">
@@ -43,10 +43,10 @@
           <li class="nav-item">
             <form action="{{ route('logout') }}" method="post">
               @csrf
-              <a href="{{ route('logout') }}" class="nav-link" 
+              <a href="{{ route('logout') }}" class="nav-link active" 
               onclick="event.preventDefault();
               this.closest('form').submit();">
-                Logout
+                Sair
               </a>              
   
             </form>
@@ -54,7 +54,7 @@
         </ul>   
       </div>
 
-      <div class="navbar-text justify-content-end navbar-collapse">
+      <div class="navbar-text justify-content-end navbar-collapse active">
         {{-- Bem Vindo! {{ explode(' ',Auth::user()->nome)[0] }}   --}}
         Bem Vindo! {{ Auth::user()->nome }}  
       </div>
@@ -63,7 +63,7 @@
       @guest
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a href="{{ route('usuarios.create') }}" class="nav-link">Registrar</a>
+            <a href="{{ route('usuarios.create') }}" class="nav-link active">Registrar</a>
           </li>
         </ul>
       
