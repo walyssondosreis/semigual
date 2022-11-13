@@ -17,8 +17,8 @@
                 @foreach ($chamado->alvos as $alvo )
                     {{ $alvo->nome }}
                 @endforeach
-                {{ PHP_EOL }}
-                {{ $chamado->interacoes }}
+                {{-- {{ PHP_EOL }} --}}
+                {{-- {{ $chamado->interacoes }} --}}
             <span class="d-flex">
                 <a href="" class="btn btn-outline-primary edit-btn btn-sm"><ion-icon name="create-outline"></ion-icon></a>
             </span>
