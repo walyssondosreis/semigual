@@ -1,5 +1,11 @@
 
 <x-layout title='Entrar no Sistema'>
+
+    @isset($mensagemSucesso)
+    <div class="alert alert-success">
+    {{ $mensagemSucesso }}
+    </div>
+    @endisset  
     
     <form action="{{ route('login.store') }}" method="POST">
         <!-- @CSRF é necessário para que o formulário enviado seja reconhecido pelo servidor -->

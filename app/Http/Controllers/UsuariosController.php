@@ -49,17 +49,25 @@ class UsuariosController extends Controller
      */
     public function store(Request $request)
     {
-        // Envio de email
-        $email= new UsuarioCreated();
-        Mail::to($request->user())->send($email);
-
         $dados = $request->except(['token']);
         $dados['password'] = Hash::make($dados['password']);
         $usuario= Usuario::create($dados);
         
-        Auth::login($usuario);
+        // 
 
-        return to_route('home');
+        // Envio de email
+        $email= new UsuarioCreated();
+        // Mail::to($request->user())->send($email);
+        Mail::to($usuario)->send($email);
+
+        if(!Auth::check()){
+            Auth::login($usuario);
+            return to_route('chamados.create')
+            ->with('mensagem.sucesso','Seu usuário foi cadastrado com sucesso e você já pode abrir chamados!');
+        }
+        return to_route('usuarios.index')
+        ->with('mensagem.sucesso','Usuário cadastrado com Sucesso!');
+        
     }
 
     /**
