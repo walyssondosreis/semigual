@@ -24,7 +24,7 @@ class Chamado extends Model
 
     public function interacoes()
     {
-        return $this->hasMany(Interacao::class, 'interacao_id');
+        return $this->hasMany(Interacao::class);
     }
     public function usuarios()
     {

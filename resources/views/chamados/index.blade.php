@@ -11,14 +11,11 @@
         @foreach ($chamados as $chamado)
 
         <li class="list-group-item d-flex justify-content-between align-items-center">
-            #{{ $chamado->id ." ".
-                $chamado->usuarios->nome_usr ." ".
-                $chamado->categorias->nome ." " }}
+            #{{ $chamado->id ." ". $chamado->usuarios->nome_usr }} <br>
                 @foreach ($chamado->alvos as $alvo )
                     {{ $alvo->nome }}
-                @endforeach
-                {{-- {{ PHP_EOL }} --}}
-                {{-- {{ $chamado->interacoes }} --}}
+                @endforeach <br>
+                {{ $chamado->interacoes->find(1)->descricao}}
             <span class="d-flex">
                 <a href="" class="btn btn-outline-primary edit-btn btn-sm"><ion-icon name="create-outline"></ion-icon></a>
             </span>
